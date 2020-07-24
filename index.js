@@ -127,10 +127,22 @@ console.log("\n");
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(reviews, myRating) {
+
+    let reviewByRating = [];
+
+    for (index in reviews){
+      if(reviews[index].rating >= myRating && reviews[index].rating < myRating +1){
+        reviewByRating.unshift(reviews[index]);
+      }
+    }
+
+    return reviewByRating;
   }
 
+console.log("Stretch 1");
+console.log(getReviewByRating(reviews, 4));
+console.log("\n");  
   
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
   
@@ -145,10 +157,23 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
+  function getLongReviews(reviews) {
+    
+    let longReviews = [];
+
+    for (index in reviews){
+      if(reviews[index].feedback.split(" ").length > 15){
+        longReviews.unshift(reviews[index]);
+      }
+    }
+
+    return longReviews;
   }
   
+
+  console.log("Stretch 2");
+  console.log(getLongReviews(reviews));
+  console.log("\n");  
 
 /* STRETCH 3:  This challenge is not related to the data above! 
 
@@ -168,7 +193,21 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(odoValue) {
+
+  return {
+    odometer: odoValue,
+    drive: function(distance){
+      return this.odometer += distance;
+    }
+  };
+
 }
+
+console.log("Stretch 3");
+let carExample1 = carMaker(120);
+let distance = 15650;
+console.log(`Odometer argument is: ${carExample1.odometer}`);
+console.log(`Odometer value after distance of ${distance} is: ${carExample1.drive(distance)}`);
+console.log(`Odometer property updated to: ${carExample1.odometer}`);
+console.log("\n");  
